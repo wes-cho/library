@@ -30,8 +30,37 @@ function displayLibrary(array){
     });
 };
 
+//on button click, display form
+const newBookButton = document.querySelector('#new-book');
+const htmlBody = document.querySelector('body');
+newBookButton.addEventListener('click', ()=> {
+    const newBookForm = document.createElement('form');
+    //newBookForm is not a node??
+    body.insertBefore(newBookForm,table); //change where the form is appended later
 
+    const titleLabel = document.createElement('label');
+    newBookForm.appendChild(titleLabel);
+    const titleInput = document.createElement('input');
+    newBookForm.appendChild(titleInput);
+    const authorLabel = document.createElement('label');
+    newBookForm.appendChild(authorLabel);
+    const authorInput = document.createElement('input');
+    newBookForm.appendChild(authorInput);
 
+    titleLabel.setAttribute('for', 'title');
+    titleInput.setAttribute('type', 'text');
+    titleInput.setAttribute('id', 'bookTitle');
+    titleInput.setAttribute('name', 'title');
+
+    authorLabel.setAttribute('for', 'title');
+    authorInput.setAttribute('type', 'text');
+    authorInput.setAttribute('id', 'bookAuthor');
+    authorInput.setAttribute('name', 'title');
+    
+});
+
+//form collects book title and book author
+//call addBookToLibrary function, passing user inputs as parameters
 
 addBookToLibrary('Titanic', 'Wesley Cho');
 addBookToLibrary('Moby Dick', 'Eddie Huynh');
