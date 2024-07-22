@@ -20,13 +20,13 @@ function displayLibrary(array){
         const newRow = document.createElement('tr');
         tableBody.appendChild(newRow);
         //create new entries & change text content
-        const column1 = document.createElement('td');
-        const column2 = document.createElement('td');
-        column1.textContent = bookInLibrary.title;
-        column2.textContent = bookInLibrary.author;
+        const titleData = document.createElement('td');
+        const authorData = document.createElement('td');
+        titleData.textContent = bookInLibrary.title;
+        authorData.textContent = bookInLibrary.author;
         //add data cells to table
-        newRow.appendChild(column1);
-        newRow.appendChild(column2);
+        newRow.appendChild(titleData);
+        newRow.appendChild(authorData);
     });
 };
 
@@ -35,43 +35,50 @@ const newBookButton = document.querySelector('#new-book');
 const htmlBody = document.querySelector('body');
 newBookButton.addEventListener('click', ()=> {
     const newBookForm = document.createElement('form');
-    //newBookForm is not a node??
-    body.insertBefore(newBookForm,table); //change where the form is appended later
+    body.insertBefore(newBookForm,table);
 
     const titleLabel = document.createElement('label');
-    titleLabel.textContent = 'Title: ';
-    newBookForm.appendChild(titleLabel);
+        titleLabel.textContent = 'Title: ';
+        titleLabel.setAttribute('for', 'title');
+        newBookForm.appendChild(titleLabel);
+        
     const titleInput = document.createElement('input');
-    newBookForm.appendChild(titleInput);
+        titleInput.setAttribute('type', 'text');
+        titleInput.setAttribute('id', 'title');
+        titleInput.setAttribute('name', 'title');
+        newBookForm.appendChild(titleInput);
+
     const lineBreak1 = document.createElement('br');
-    newBookForm.appendChild(lineBreak1);
+        newBookForm.appendChild(lineBreak1);
+
     const authorLabel = document.createElement('label');
-    authorLabel.textContent = 'Author: ';
-    newBookForm.appendChild(authorLabel);
+        authorLabel.textContent = 'Author: ';
+        authorLabel.setAttribute('for', 'author');
+        newBookForm.appendChild(authorLabel);
+
     const authorInput = document.createElement('input');
-    newBookForm.appendChild(authorInput);
+        authorInput.setAttribute('type', 'text');
+        authorInput.setAttribute('id', 'author');
+        authorInput.setAttribute('name', 'author');
+        newBookForm.appendChild(authorInput);
+
     const submitButton = document.createElement('button');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.textContent = 'Submit';
+        submitButton.setAttribute('type', 'submit');
+        submitButton.setAttribute('id', 'submit');
+        submitButton.textContent = 'Submit';
+        submitButton.addEventListener('click', (event) => {
+            //call addBookToLibrary function, passing user inputs as parameters
+            event.preventDefault();
+             addBookToLibrary(document.getElementById('author').value, document.getElementById('title').value)
+             displayLibrary(myLibrary);
+             
+        });
+
     const lineBreak2 = document.createElement('br');
-    newBookForm.appendChild(lineBreak2);
-    newBookForm.appendChild(submitButton);
-
-    titleLabel.setAttribute('for', 'title');
-    titleInput.setAttribute('type', 'text');
-    titleInput.setAttribute('id', 'title');
-    titleInput.setAttribute('name', 'author');
-
-    authorLabel.setAttribute('for', 'author');
-    authorInput.setAttribute('type', 'text');
-    authorInput.setAttribute('id', 'author');
-    authorInput.setAttribute('name', 'author');
-    
+        newBookForm.appendChild(lineBreak2);
+        newBookForm.appendChild(submitButton);
 });
 
-//form collects book title and book author
-//call addBookToLibrary function, passing user inputs as parameters
-
-addBookToLibrary('Titanic', 'Wesley Cho');
-addBookToLibrary('Moby Dick', 'Eddie Huynh');
-displayLibrary(myLibrary);
+// addBookToLibrary('Titanic', 'Wesley Cho');
+// addBookToLibrary('Moby Dick', 'Eddie Huynh');
+// addBookToLibrary('Never Search Alone', 'Phyl Terry');
