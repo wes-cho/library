@@ -39,23 +39,33 @@ newBookButton.addEventListener('click', ()=> {
     body.insertBefore(newBookForm,table); //change where the form is appended later
 
     const titleLabel = document.createElement('label');
+    titleLabel.textContent = 'Title: ';
     newBookForm.appendChild(titleLabel);
     const titleInput = document.createElement('input');
     newBookForm.appendChild(titleInput);
+    const lineBreak1 = document.createElement('br');
+    newBookForm.appendChild(lineBreak1);
     const authorLabel = document.createElement('label');
+    authorLabel.textContent = 'Author: ';
     newBookForm.appendChild(authorLabel);
     const authorInput = document.createElement('input');
     newBookForm.appendChild(authorInput);
+    const submitButton = document.createElement('button');
+    submitButton.setAttribute('type', 'submit');
+    submitButton.textContent = 'Submit';
+    const lineBreak2 = document.createElement('br');
+    newBookForm.appendChild(lineBreak2);
+    newBookForm.appendChild(submitButton);
 
     titleLabel.setAttribute('for', 'title');
     titleInput.setAttribute('type', 'text');
-    titleInput.setAttribute('id', 'bookTitle');
-    titleInput.setAttribute('name', 'title');
+    titleInput.setAttribute('id', 'title');
+    titleInput.setAttribute('name', 'author');
 
-    authorLabel.setAttribute('for', 'title');
+    authorLabel.setAttribute('for', 'author');
     authorInput.setAttribute('type', 'text');
-    authorInput.setAttribute('id', 'bookAuthor');
-    authorInput.setAttribute('name', 'title');
+    authorInput.setAttribute('id', 'author');
+    authorInput.setAttribute('name', 'author');
     
 });
 

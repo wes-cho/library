@@ -1,0 +1,15 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+table, th, td{
+    border: 1px solid;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td{
+    width: 150px;
+}
