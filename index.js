@@ -15,16 +15,20 @@ const tableBody = document.createElement('tbody');
 table.appendChild(tableBody);
 
 function displayLibrary(array){
+    for (let row = 0; row < document.querySelectorAll('tr').length; i++){
+        if (document.querySelectorAll('tr')[row].id === 'do-not-delete'){
+            continue;
+        } else{
+            document.querySelectorAll('tr')[row].remove();
+        };};
     array.forEach((bookInLibrary) => {
-        //create new row & add to table
         const newRow = document.createElement('tr');
+        newRow.setAttribute('id', `${bookInLibrary.title}-${bookInLibrary.author}`);
         tableBody.appendChild(newRow);
-        //create new entries & change text content
         const titleData = document.createElement('td');
         const authorData = document.createElement('td');
         titleData.textContent = bookInLibrary.title;
         authorData.textContent = bookInLibrary.author;
-        //add data cells to table
         newRow.appendChild(titleData);
         newRow.appendChild(authorData);
     });
@@ -63,22 +67,17 @@ newBookButton.addEventListener('click', ()=> {
         newBookForm.appendChild(authorInput);
 
     const submitButton = document.createElement('button');
-        submitButton.setAttribute('type', 'submit');
+        submitButton.setAttribute('type', 'button'); //would need to implement preventDefault() if type 'submit'
         submitButton.setAttribute('id', 'submit');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
-            //call addBookToLibrary function, passing user inputs as parameters
-            event.preventDefault();
-             addBookToLibrary(document.getElementById('author').value, document.getElementById('title').value)
-             displayLibrary(myLibrary);
-             
+            addBookToLibrary(document.getElementById('title').value, document.getElementById('author').value)
+            displayLibrary(myLibrary);
+            newBookForm.remove();
+            
         });
 
     const lineBreak2 = document.createElement('br');
         newBookForm.appendChild(lineBreak2);
         newBookForm.appendChild(submitButton);
 });
-
-// addBookToLibrary('Titanic', 'Wesley Cho');
-// addBookToLibrary('Moby Dick', 'Eddie Huynh');
-// addBookToLibrary('Never Search Alone', 'Phyl Terry');
