@@ -48,6 +48,7 @@ function displayLibrary(array){
 const newBookButton = document.querySelector('#new-book');
 const htmlBody = document.querySelector('body');
 newBookButton.addEventListener('click', ()=> {
+    newBookButton.disabled = true;
     const newBookForm = document.createElement('form');
     body.insertBefore(newBookForm,table);
 
@@ -112,6 +113,7 @@ newBookButton.addEventListener('click', ()=> {
                 document.getElementById('read').value);
             displayLibrary(myLibrary);
             newBookForm.remove();
+            newBookButton.disabled = false;
         });
 
     const lineBreak4 = document.createElement('br');
