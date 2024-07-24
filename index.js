@@ -11,18 +11,20 @@ function addBookToLibrary(title, author) {
 }
 
 const table = document.querySelector('#library-table');
-const tableBody = document.createElement('tbody');
-table.appendChild(tableBody);
+
 
 function displayLibrary(array){
-    for (let row = 0; row < document.querySelectorAll('tr').length; i++){
-        if (document.querySelectorAll('tr')[row].id === 'do-not-delete'){
-            continue;
-        } else{
-            document.querySelectorAll('tr')[row].remove();
-        };};
+    if (document.querySelector('tbody') != null){
+        document.querySelector('tbody').remove();
+        const tableBody = document.createElement('tbody');
+        table.appendChild(tableBody);
+    } else {
+        const tableBody = document.createElement('tbody');
+        table.appendChild(tableBody);
+    };
     array.forEach((bookInLibrary) => {
         const newRow = document.createElement('tr');
+        const tableBody = document.querySelector('tbody');
         newRow.setAttribute('id', `${bookInLibrary.title}-${bookInLibrary.author}`);
         tableBody.appendChild(newRow);
         const titleData = document.createElement('td');
@@ -71,7 +73,7 @@ newBookButton.addEventListener('click', ()=> {
         submitButton.setAttribute('id', 'submit');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
-            addBookToLibrary(document.getElementById('title').value, document.getElementById('author').value)
+            addBookToLibrary(document.getElementById('title').value, document.getElementById('author').value);
             displayLibrary(myLibrary);
             newBookForm.remove();
             
