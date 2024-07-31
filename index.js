@@ -55,7 +55,10 @@ function displayLibrary(array){
             removeCell.appendChild(removeButton);
             removeButton.addEventListener('click', () => {
                 newRow.remove();
-                //remove book object from array
+                for (let i=0; i<myLibrary.length; i++){
+                    const index = myLibrary[i].id.indexOf(newRow.id);
+                    myLibrary.splice(index, 1);
+                };
             });
     });
 };
