@@ -9,6 +9,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read);
+  newBook['id'] = `${title}-${author}`;
   myLibrary.push(newBook);
 }
 
@@ -54,6 +55,7 @@ function displayLibrary(array){
             removeCell.appendChild(removeButton);
             removeButton.addEventListener('click', () => {
                 newRow.remove();
+                //remove book object from array
             });
     });
 };
