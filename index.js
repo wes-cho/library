@@ -12,9 +12,8 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
 }
 
-const table = document.querySelector('#library-table');
-
 //TABLE CREATION
+const table = document.querySelector('#library-table');
 function displayLibrary(array){
     if (document.querySelector('tbody') != null){
         document.querySelector('tbody').remove();
@@ -24,23 +23,38 @@ function displayLibrary(array){
         const tableBody = document.createElement('tbody');
         table.appendChild(tableBody);
     };
+
     array.forEach((bookInLibrary) => {
         const newRow = document.createElement('tr');
         const tableBody = document.querySelector('tbody');
         newRow.setAttribute('id', `${bookInLibrary.title}-${bookInLibrary.author}`);
         tableBody.appendChild(newRow);
+
         const titleData = document.createElement('td');
+            titleData.textContent = bookInLibrary.title;
+            newRow.appendChild(titleData);
+
         const authorData = document.createElement('td');
+            authorData.textContent = bookInLibrary.author;
+            newRow.appendChild(authorData);
+
         const pagesData = document.createElement('td');
+            pagesData.textContent = bookInLibrary.pages;
+            newRow.appendChild(pagesData);
+
         const readData = document.createElement('td');
-        titleData.textContent = bookInLibrary.title;
-        authorData.textContent = bookInLibrary.author;
-        pagesData.textContent = bookInLibrary.pages;
-        readData.textContent = bookInLibrary.read;
-        newRow.appendChild(titleData);
-        newRow.appendChild(authorData);
-        newRow.appendChild(pagesData);
-        newRow.appendChild(readData);
+            readData.textContent = bookInLibrary.read;
+            newRow.appendChild(readData);
+
+        const removeCell = document.createElement('td');
+            newRow.appendChild(removeCell);
+
+        const removeButton = document.createElement('input');
+            removeButton.setAttribute('type', 'radio');
+            removeCell.appendChild(removeButton);
+            removeButton.addEventListener('click', () => {
+                newRow.remove();
+            });
     });
 };
 
