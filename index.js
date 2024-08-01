@@ -130,20 +130,25 @@ newBookButton.addEventListener('click', ()=> {
     newBookForm.appendChild(lineBreak3);
 
     const submitButton = document.createElement('button');
-        submitButton.setAttribute('type', 'button'); //would need to implement preventDefault() if type 'submit'
+        submitButton.setAttribute('type', 'submit');
         submitButton.setAttribute('id', 'submit');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
-            addBookToLibrary(
-                document.getElementById('title').value, 
-                document.getElementById('author').value, 
-                document.getElementById('pages').value, 
-            );
-            displayLibrary(myLibrary);
-            newBookForm.remove();
-            newBookButton.disabled = false;
+            if (document.getElementById('title').value === '' || document.getElementById('author').value === '' || document.getElementById('pages') === ''){
+                event.preventDefault();
+                alert('Please makes sure all fields are filled.')
+            } else{
+                event.preventDefault();
+                addBookToLibrary(
+                    document.getElementById('title').value, 
+                    document.getElementById('author').value, 
+                    document.getElementById('pages').value, 
+                )
+                displayLibrary(myLibrary);
+                newBookForm.remove();
+                newBookButton.disabled = false;
+            };   
         });
-
         newBookForm.appendChild(lineBreak3);
         newBookForm.appendChild(submitButton);
 });
