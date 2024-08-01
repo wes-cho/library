@@ -36,8 +36,7 @@ function displayLibrary(array){
 
         const readButton = document.createElement('input');
             readButton.setAttribute('type', 'checkbox');
-            readCell.appendChild(readButton);
-            readCell.addEventListener('click', () => {
+            readButton.addEventListener('click', () => {
                 if(readData.textContent === 'unread'){
                     bookInLibrary.read = 'read';
                     readData.textContent = 'read';
@@ -48,6 +47,7 @@ function displayLibrary(array){
                     readData.setAttribute('class', 'unread');
                 }
             });
+            readCell.appendChild(readButton);
 
         const titleData = document.createElement('td');
             titleData.textContent = bookInLibrary.title;
@@ -139,7 +139,7 @@ newBookButton.addEventListener('click', ()=> {
                 document.getElementById('pages').value = '';
                 event.preventDefault();
                 alert('Pages cannot be less than zero.')
-            } else if (document.getElementById('title').value === '' || document.getElementById('author').value === '' || document.getElementById('pages') === ''){
+            } else if (document.getElementById('title').value === '' || document.getElementById('author').value === '' || document.getElementById('pages').value === ''){
                 event.preventDefault();
                 alert('Please makes sure all fields are filled.')
             } else{
