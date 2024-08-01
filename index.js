@@ -121,7 +121,7 @@ newBookButton.addEventListener('click', ()=> {
         pagesLabel.setAttribute('for', 'pages');
         newBookForm.appendChild(pagesLabel);
     const pagesInput = document.createElement('input');
-        pagesInput.setAttribute('type', 'text');
+        pagesInput.setAttribute('type', 'number');
         pagesInput.setAttribute('id', 'pages');
         pagesInput.setAttribute('name', 'pages');
         newBookForm.appendChild(pagesInput);
