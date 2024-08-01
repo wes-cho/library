@@ -31,6 +31,20 @@ function displayLibrary(array){
         newRow.setAttribute('id', `${bookInLibrary.title}-${bookInLibrary.author}`);
         tableBody.appendChild(newRow);
 
+        const readCell = document.createElement('td');
+            newRow.appendChild(readCell);
+
+        const readButton = document.createElement('input');
+            readButton.setAttribute('type', 'checkbox');
+            readCell.appendChild(readButton);
+            readCell.addEventListener('click', () => {
+                if(readData.textContent === 'unread'){
+                    readData.textContent = 'read';
+                } else if (readData.textContent === 'read'){
+                    readData.textContent = 'unread';
+                }
+            });
+
         const titleData = document.createElement('td');
             titleData.textContent = bookInLibrary.title;
             newRow.appendChild(titleData);
@@ -44,7 +58,7 @@ function displayLibrary(array){
             newRow.appendChild(pagesData);
 
         const readData = document.createElement('td');
-            readData.textContent = bookInLibrary.read;
+            readData.textContent = 'unread';
             newRow.appendChild(readData);
 
         const removeCell = document.createElement('td');
@@ -60,6 +74,8 @@ function displayLibrary(array){
                     myLibrary.splice(index, 1);
                 };
             });
+
+        
     });
 };
 
