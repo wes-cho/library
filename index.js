@@ -131,7 +131,7 @@ newBookButton.addEventListener('click', ()=> {
         submitButton.setAttribute('id', 'submit');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
-            if (Number(document.getElementById('pages').value) < 0){
+            if (Number(document.getElementById('pages').value) <= 0){
                 document.getElementById('pages').value = '';
                 event.preventDefault();
                 alert('Pages cannot be less than zero.')
