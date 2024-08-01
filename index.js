@@ -73,11 +73,16 @@ function displayLibrary(array){
             removeButton.setAttribute('type', 'radio');
             removeCell.appendChild(removeButton);
             removeButton.addEventListener('click', () => {
-                newRow.remove();
-                for (let book=0; book<myLibrary.length; book++){
-                    const index = myLibrary[book].id.indexOf(newRow.id);
-                    myLibrary.splice(index, 1);
-                };
+                if(confirm('Are you sure you want to remove this book from your library?')){
+                    newRow.remove();
+                    for (let book=0; book<myLibrary.length; book++){
+                        const index = myLibrary[book].id.indexOf(newRow.id);
+                        myLibrary.splice(index, 1);
+                    };
+                } else{
+                    alert('Book not removed.');
+                    removeButton.checked = false;
+                }
             });
     });
 };
