@@ -13,3 +13,22 @@ table {
 td, th{
     width: 150px;
 }
+
+#new-book{
+    display: inline;
+    height: 2rem;
+    width: 10rem;
+    justify-self: end;
+    margin-top: 19px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 75px 1fr;
+    gap: 1rem;
+}
+
+#library-table{
+    grid-column: 1 /span 2;
+}

@@ -84,11 +84,12 @@ function displayLibrary(array){
 // FORM CREATION
 const newBookButton = document.querySelector('#new-book');
 const htmlBody = document.querySelector('body');
+const container = document.querySelector('#container');
 newBookButton.addEventListener('click', ()=> {
     newBookButton.disabled = true;
     const newBookForm = document.createElement('form');
-    body.insertBefore(newBookForm,table);
-
+    container.insertBefore(newBookForm,table);
+ 
     const titleLabel = document.createElement('label');
         titleLabel.textContent = 'Title: ';
         titleLabel.setAttribute('for', 'title');
