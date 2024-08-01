@@ -1,25 +1,14 @@
 body{
     font-family: 'Courier New', Courier, monospace;
 }
-
 table, th, td{
     border: 1px solid;
 }
-
 table {
     border-collapse: collapse;
 }
-
 td, th{
     width: 150px;
-}
-
-#new-book{
-    display: inline;
-    height: 2rem;
-    width: 10rem;
-    justify-self: end;
-    margin-top: 19px;
 }
 
 #container{
@@ -28,7 +17,29 @@ td, th{
     grid-template-rows: 75px 1fr;
     gap: 1rem;
 }
-
+#new-book{
+    display: inline;
+    height: 2rem;
+    width: 10rem;
+    justify-self: end;
+    margin-top: 19px;
+}
+form{
+    grid-column: 2;
+    justify-self: end;
+    display:grid;
+}
+#submit{
+    display: grid;
+    margin-top: .6rem;
+    width: 5rem;
+}
 #library-table{
     grid-column: 1 /span 2;
+}
+.unread{
+    background-color: #FF918F;
+}
+.read{
+    background-color: #49C97C;
 }

@@ -41,9 +41,11 @@ function displayLibrary(array){
                 if(readData.textContent === 'unread'){
                     bookInLibrary.read = 'read';
                     readData.textContent = 'read';
+                    readData.setAttribute('class', 'read');
                 } else if (readData.textContent === 'read'){
                     bookInLibrary.read = 'unread';
                     readData.textContent = 'unread';
+                    readData.setAttribute('class', 'unread');
                 }
             });
 
@@ -61,6 +63,7 @@ function displayLibrary(array){
 
         const readData = document.createElement('td');
             readData.textContent = 'unread';
+            readData.setAttribute('class', 'unread');
             newRow.appendChild(readData);
 
         const removeCell = document.createElement('td');
@@ -71,13 +74,11 @@ function displayLibrary(array){
             removeCell.appendChild(removeButton);
             removeButton.addEventListener('click', () => {
                 newRow.remove();
-                for (let i=0; i<myLibrary.length; i++){
-                    const index = myLibrary[i].id.indexOf(newRow.id);
+                for (let book=0; book<myLibrary.length; book++){
+                    const index = myLibrary[book].id.indexOf(newRow.id);
                     myLibrary.splice(index, 1);
                 };
             });
-
-        
     });
 };
 
@@ -91,7 +92,7 @@ newBookButton.addEventListener('click', ()=> {
     container.insertBefore(newBookForm,table);
  
     const titleLabel = document.createElement('label');
-        titleLabel.textContent = 'Title: ';
+        titleLabel.textContent = 'Title*: ';
         titleLabel.setAttribute('for', 'title');
         newBookForm.appendChild(titleLabel);
     const titleInput = document.createElement('input');
@@ -100,11 +101,11 @@ newBookButton.addEventListener('click', ()=> {
         titleInput.setAttribute('name', 'title');
         newBookForm.appendChild(titleInput);
 
-    const lineBreak1 = document.createElement('br');
-        newBookForm.appendChild(lineBreak1);
+    // const lineBreak1 = document.createElement('br');
+    //     newBookForm.appendChild(lineBreak1);
 
     const authorLabel = document.createElement('label');
-        authorLabel.textContent = 'Author:';
+        authorLabel.textContent = 'Author*:';
         authorLabel.setAttribute('for', 'author');
         newBookForm.appendChild(authorLabel);
     const authorInput = document.createElement('input');
@@ -113,11 +114,11 @@ newBookButton.addEventListener('click', ()=> {
         authorInput.setAttribute('name', 'author');
         newBookForm.appendChild(authorInput);
 
-    const lineBreak2 = document.createElement('br');
-    newBookForm.appendChild(lineBreak2);
+    // const lineBreak2 = document.createElement('br');
+    // newBookForm.appendChild(lineBreak2);
 
     const pagesLabel = document.createElement('label');
-        pagesLabel.textContent = 'Pages: ';
+        pagesLabel.textContent = 'Pages*: ';
         pagesLabel.setAttribute('for', 'pages');
         newBookForm.appendChild(pagesLabel);
     const pagesInput = document.createElement('input');
@@ -126,15 +127,19 @@ newBookButton.addEventListener('click', ()=> {
         pagesInput.setAttribute('name', 'pages');
         newBookForm.appendChild(pagesInput);
 
-    const lineBreak3 = document.createElement('br');
-    newBookForm.appendChild(lineBreak3);
+    // const lineBreak3 = document.createElement('br');
+    // newBookForm.appendChild(lineBreak3);
 
     const submitButton = document.createElement('button');
         submitButton.setAttribute('type', 'submit');
         submitButton.setAttribute('id', 'submit');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
-            if (document.getElementById('title').value === '' || document.getElementById('author').value === '' || document.getElementById('pages') === ''){
+            if (Number(document.getElementById('pages').value) < 0){
+                document.getElementById('pages').value = '';
+                event.preventDefault();
+                alert('Pages cannot be less than zero.')
+            } else if (document.getElementById('title').value === '' || document.getElementById('author').value === '' || document.getElementById('pages') === ''){
                 event.preventDefault();
                 alert('Please makes sure all fields are filled.')
             } else{
@@ -149,6 +154,6 @@ newBookButton.addEventListener('click', ()=> {
                 newBookButton.disabled = false;
             };   
         });
-        newBookForm.appendChild(lineBreak3);
+        // newBookForm.appendChild(lineBreak3);
         newBookForm.appendChild(submitButton);
 });
