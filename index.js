@@ -126,16 +126,6 @@ newBookButton.addEventListener('click', ()=> {
     const lineBreak3 = document.createElement('br');
     newBookForm.appendChild(lineBreak3);
 
-        const readLabel = document.createElement('label');
-        readLabel.textContent = 'Read?: ';
-        readLabel.setAttribute('for', 'pages');
-        newBookForm.appendChild(readLabel);
-    const readInput = document.createElement('input');
-        readInput.setAttribute('type', 'text');
-        readInput.setAttribute('id', 'read');
-        readInput.setAttribute('name', 'read');
-        newBookForm.appendChild(readInput);
-
     const submitButton = document.createElement('button');
         submitButton.setAttribute('type', 'button'); //would need to implement preventDefault() if type 'submit'
         submitButton.setAttribute('id', 'submit');
@@ -145,13 +135,12 @@ newBookButton.addEventListener('click', ()=> {
                 document.getElementById('title').value, 
                 document.getElementById('author').value, 
                 document.getElementById('pages').value, 
-                document.getElementById('read').value);
+            );
             displayLibrary(myLibrary);
             newBookForm.remove();
             newBookButton.disabled = false;
         });
-
-    const lineBreak4 = document.createElement('br');
-        newBookForm.appendChild(lineBreak4);
+        
+        newBookForm.appendChild(lineBreak3);
         newBookForm.appendChild(submitButton);
 });
