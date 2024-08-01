@@ -101,9 +101,6 @@ newBookButton.addEventListener('click', ()=> {
         titleInput.setAttribute('name', 'title');
         newBookForm.appendChild(titleInput);
 
-    // const lineBreak1 = document.createElement('br');
-    //     newBookForm.appendChild(lineBreak1);
-
     const authorLabel = document.createElement('label');
         authorLabel.textContent = 'Author*:';
         authorLabel.setAttribute('for', 'author');
@@ -114,9 +111,6 @@ newBookButton.addEventListener('click', ()=> {
         authorInput.setAttribute('name', 'author');
         newBookForm.appendChild(authorInput);
 
-    // const lineBreak2 = document.createElement('br');
-    // newBookForm.appendChild(lineBreak2);
-
     const pagesLabel = document.createElement('label');
         pagesLabel.textContent = 'Pages*: ';
         pagesLabel.setAttribute('for', 'pages');
@@ -126,9 +120,6 @@ newBookButton.addEventListener('click', ()=> {
         pagesInput.setAttribute('id', 'pages');
         pagesInput.setAttribute('name', 'pages');
         newBookForm.appendChild(pagesInput);
-
-    // const lineBreak3 = document.createElement('br');
-    // newBookForm.appendChild(lineBreak3);
 
     const submitButton = document.createElement('button');
         submitButton.setAttribute('type', 'submit');
@@ -154,6 +145,5 @@ newBookButton.addEventListener('click', ()=> {
                 newBookButton.disabled = false;
             };   
         });
-        // newBookForm.appendChild(lineBreak3);
         newBookForm.appendChild(submitButton);
 });
