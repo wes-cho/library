@@ -1,14 +1,14 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.read = 'unread';
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  let newBook = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages) {
+  let newBook = new Book(title, author, pages);
   newBook['id'] = `${title}-${author}`;
   myLibrary.push(newBook);
 }
@@ -39,8 +39,10 @@ function displayLibrary(array){
             readCell.appendChild(readButton);
             readCell.addEventListener('click', () => {
                 if(readData.textContent === 'unread'){
+                    bookInLibrary.read = 'read';
                     readData.textContent = 'read';
                 } else if (readData.textContent === 'read'){
+                    bookInLibrary.read = 'unread';
                     readData.textContent = 'unread';
                 }
             });
@@ -140,7 +142,7 @@ newBookButton.addEventListener('click', ()=> {
             newBookForm.remove();
             newBookButton.disabled = false;
         });
-        
+
         newBookForm.appendChild(lineBreak3);
         newBookForm.appendChild(submitButton);
 });
